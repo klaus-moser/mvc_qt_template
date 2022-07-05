@@ -23,6 +23,17 @@ class Controller(object):
     def __init__(self, model, view):
         self.model = model
         self.view = view
+        self.connect_signals_slots()
+
+    def connect_signals_slots(self):
+        self.view.action_Exit.triggered.connect(self.view.close)
+        self.view.action_Find_and_Repleace.triggered.connect(self.view.find_and_replace)
+        self.view.action_About.triggered.connect(self.show_random)
+        # self.view.action_About.triggered.connect(self.view.about)
+
+    def show_random(self):
+        rand = self.model.return_random()
+        self.view.show_text(str(rand))
 
 
 if __name__ == "__main__":

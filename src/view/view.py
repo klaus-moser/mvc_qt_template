@@ -8,12 +8,6 @@ class Window(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
-        self.connect_signals_slots()
-
-    def connect_signals_slots(self):
-        self.action_Exit.triggered.connect(self.close)
-        self.action_Find_and_Repleace.triggered.connect(self.find_and_replace)
-        self.action_About.triggered.connect(self.about)
 
     def find_and_replace(self):
         dialog = FindReplaceDialog(self)
@@ -28,6 +22,9 @@ class Window(QMainWindow, Ui_MainWindow):
             "<p>- Qt Designer</p>"
             "<p>- Python</p>",
         )
+
+    def show_text(self, text):
+        self.textEdit.setText(text)
 
 
 class FindReplaceDialog(QDialog):
