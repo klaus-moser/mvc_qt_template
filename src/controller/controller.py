@@ -19,19 +19,30 @@ __author__ = "klaus.moser"
 
 
 class Controller(object):
+    """
+    Controller Class of MVC.
+    """
 
     def __init__(self, model, view):
         self.model = model
         self.view = view
         self.connect_signals_slots()
 
-    def connect_signals_slots(self):
+    def connect_signals_slots(self) -> None:
+        """
+        Connect signals.
+        :return:
+        """
         self.view.action_Exit.triggered.connect(self.view.close)
         self.view.action_Find_and_Repleace.triggered.connect(self.view.find_and_replace)
         self.view.action_About.triggered.connect(self.show_random)
         # self.view.action_About.triggered.connect(self.view.about)
 
-    def show_random(self):
+    def show_random(self) -> None:
+        """
+        Print random integer to display.
+        :return:
+        """
         rand = self.model.return_random()
         self.view.show_text(str(rand))
 

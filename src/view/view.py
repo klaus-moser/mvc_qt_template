@@ -5,6 +5,11 @@ from .view_designer import Ui_MainWindow
 
 
 class Window(QMainWindow, Ui_MainWindow):
+    """
+    View Class of MVC.
+    Imported from 'view_designer.py' to be independent of builds.
+    """
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
